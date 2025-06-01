@@ -1,0 +1,178 @@
+
+starting build "a9782751-7b8e-45bb-8f33-ef59ea3db063"
+FETCHSOURCE
+Fetching storage object: gs://run-sources-mean-stack-deployment-us-central1/services/mean-api/1748813191.12142-01e521bd178c40b0af429022998ceec1.zip#1748813193100416
+Copying gs://run-sources-mean-stack-deployment-us-central1/services/mean-api/1748813191.12142-01e521bd178c40b0af429022998ceec1.zip#1748813193100416...
+/ [0 files][    0.0 B/  1.5 MiB]                                                / [1 files][  1.5 MiB/  1.5 MiB]                                                
+Operation completed over 1 objects/1.5 MiB.                                      
+Archive:  /tmp/source-archive.zip
+   creating: /workspace/web/
+   creating: /workspace/api-e2e/
+   creating: /workspace/.github/
+   creating: /workspace/api/
+   creating: /workspace/.vscode/
+   creating: /workspace/.nx/
+   creating: /workspace/web-e2e/
+   creating: /workspace/web/public/
+   creating: /workspace/web/src/
+   creating: /workspace/web/src/app/
+   creating: /workspace/web/src/environments/
+   creating: /workspace/web/src/assets/
+   creating: /workspace/web/src/app/interceptors/
+   creating: /workspace/web/src/app/auth/
+   creating: /workspace/web/src/app/dashboard/
+   creating: /workspace/web/src/app/services/
+   creating: /workspace/web/src/app/guards/
+   creating: /workspace/web/src/app/store/
+   creating: /workspace/web/src/app/auth/login-register/
+   creating: /workspace/web/src/app/store/auth/
+   creating: /workspace/api-e2e/src/
+   creating: /workspace/api-e2e/src/support/
+   creating: /workspace/api-e2e/src/api/
+   creating: /workspace/.github/instructions/
+   creating: /workspace/api/src/
+   creating: /workspace/api/src/app/
+   creating: /workspace/api/src/assets/
+   creating: /workspace/api/src/app/dto/
+   creating: /workspace/api/src/app/test/
+   creating: /workspace/api/src/app/auth/
+   creating: /workspace/api/src/app/schemas/
+   creating: /workspace/web-e2e/src/
+   creating: /workspace/web-e2e/src/support/
+   creating: /workspace/web-e2e/src/fixtures/
+   creating: /workspace/web-e2e/src/e2e/
+  inflating: /workspace/jest.preset.js  
+  inflating: /workspace/nx.json      
+  inflating: /workspace/tsconfig.base.json  
+  inflating: /workspace/Dockerfile   
+  inflating: /workspace/.prettierignore  
+  inflating: /workspace/.editorconfig  
+  inflating: /workspace/README.md    
+  inflating: /workspace/.dockerignore  
+  inflating: /workspace/eslint.base.config.mjs  
+  inflating: /workspace/DEPLOYMENT_GUIDE.md  
+  inflating: /workspace/package-lock.json  
+  inflating: /workspace/package.json  
+  inflating: /workspace/.prettierrc  
+  inflating: /workspace/build_log.txt  
+  inflating: /workspace/firebase.json  
+  inflating: /workspace/deploy.sh    
+  inflating: /workspace/eslint.config.mjs  
+  inflating: /workspace/jest.config.ts  
+  inflating: /workspace/web/tsconfig.editor.json  
+  inflating: /workspace/web/tsconfig.app.json  
+  inflating: /workspace/web/project.json  
+  inflating: /workspace/web/tsconfig.json  
+  inflating: /workspace/web/eslint.config.mjs  
+  inflating: /workspace/web/tsconfig.spec.json  
+  inflating: /workspace/web/jest.config.ts  
+  inflating: /workspace/web/public/favicon.ico  
+  inflating: /workspace/web/src/index.html  
+  inflating: /workspace/web/src/main.ts  
+  inflating: /workspace/web/src/main.server.ts  
+  inflating: /workspace/web/src/test-setup.ts  
+  inflating: /workspace/web/src/styles.scss  
+  inflating: /workspace/web/src/server.ts  
+  inflating: /workspace/web/src/app/app.component.html  
+  inflating: /workspace/web/src/app/app.routes.server.ts  
+  inflating: /workspace/web/src/app/nx-welcome.component.ts  
+  inflating: /workspace/web/src/app/app.config.server.ts  
+  inflating: /workspace/web/src/app/app.component.scss  
+  inflating: /workspace/web/src/app/app.routes.ts  
+  inflating: /workspace/web/src/app/app.component.spec.ts  
+  inflating: /workspace/web/src/app/app.component.ts  
+  inflating: /workspace/web/src/app/app.config.ts  
+  inflating: /workspace/web/src/app/interceptors/auth.interceptor.ts  
+  inflating: /workspace/web/src/app/auth/login-register/login-register.component.scss  
+  inflating: /workspace/web/src/app/auth/login-register/login-register.component.html  
+  inflating: /workspace/web/src/app/auth/login-register/login-register.component.ts  
+  inflating: /workspace/web/src/app/dashboard/dashboard.component.scss  
+  inflating: /workspace/web/src/app/dashboard/dashboard.component.ts  
+  inflating: /workspace/web/src/app/services/auth.service.ts  
+  inflating: /workspace/web/src/app/guards/guest.guard.ts  
+  inflating: /workspace/web/src/app/guards/auth.guard.ts  
+  inflating: /workspace/web/src/app/store/app.state.ts  
+  inflating: /workspace/web/src/app/store/auth/auth.effects.ts  
+  inflating: /workspace/web/src/app/store/auth/auth.reducer.ts  
+  inflating: /workspace/web/src/app/store/auth/auth.actions.ts  
+  inflating: /workspace/web/src/app/store/auth/auth.selectors.ts  
+  inflating: /workspace/web/src/environments/environment.prod.ts  
+  inflating: /workspace/web/src/assets/background.svg  
+  inflating: /workspace/web/src/assets/penny-logo.svg  
+  inflating: /workspace/web/src/assets/penny-logo-new.svg  
+  inflating: /workspace/web/src/assets/Penny-logo.png  
+  inflating: /workspace/web/src/assets/Penny-backgrounf.png  
+  inflating: /workspace/api-e2e/project.json  
+  inflating: /workspace/api-e2e/tsconfig.json  
+  inflating: /workspace/api-e2e/eslint.config.mjs  
+  inflating: /workspace/api-e2e/tsconfig.spec.json  
+  inflating: /workspace/api-e2e/jest.config.ts  
+  inflating: /workspace/api-e2e/src/support/test-setup.ts  
+  inflating: /workspace/api-e2e/src/support/global-setup.ts  
+  inflating: /workspace/api-e2e/src/support/global-teardown.ts  
+  inflating: /workspace/api-e2e/src/api/api.spec.ts  
+  inflating: /workspace/api/tsconfig.app.json  
+  inflating: /workspace/api/project.json  
+  inflating: /workspace/api/webpack.config.js  
+  inflating: /workspace/api/tsconfig.json  
+  inflating: /workspace/api/eslint.config.mjs  
+  inflating: /workspace/api/tsconfig.spec.json  
+  inflating: /workspace/api/jest.config.ts  
+  inflating: /workspace/api/src/main.ts  
+  inflating: /workspace/api/src/main-simple.ts  
+  inflating: /workspace/api/src/app/app.service.ts  
+  inflating: /workspace/api/src/app/app-simple.module.ts  
+  inflating: /workspace/api/src/app/app.module.ts  
+  inflating: /workspace/api/src/app/app.service.spec.ts  
+  inflating: /workspace/api/src/app/app.controller.spec.ts  
+  inflating: /workspace/api/src/app/app.controller.ts  
+  inflating: /workspace/api/src/app/dto/auth.dto.ts  
+  inflating: /workspace/api/src/app/test/test.controller.ts  
+  inflating: /workspace/api/src/app/auth/auth.controller.ts  
+  inflating: /workspace/api/src/app/auth/jwt.strategy.ts  
+  inflating: /workspace/api/src/app/auth/auth.service.ts  
+  inflating: /workspace/api/src/app/auth/jwt-auth.guard.ts  
+  inflating: /workspace/api/src/app/auth/auth.module.ts  
+  inflating: /workspace/api/src/app/schemas/user.schema.ts  
+  inflating: /workspace/api/src/assets/.gitkeep  
+  inflating: /workspace/.vscode/settings.json  
+  inflating: /workspace/.vscode/extensions.json  
+  inflating: /workspace/web-e2e/project.json  
+  inflating: /workspace/web-e2e/tsconfig.json  
+  inflating: /workspace/web-e2e/eslint.config.mjs  
+  inflating: /workspace/web-e2e/cypress.config.ts  
+  inflating: /workspace/web-e2e/src/support/commands.ts  
+  inflating: /workspace/web-e2e/src/support/app.po.ts  
+  inflating: /workspace/web-e2e/src/support/e2e.ts  
+  inflating: /workspace/web-e2e/src/fixtures/example.json  
+  inflating: /workspace/web-e2e/src/e2e/app.cy.ts  
+BUILD
+Already have image (with digest): gcr.io/cloud-builders/docker
+Sending build context to Docker daemon  676.4kB
+Step 1/13 : FROM node:18-alpine
+18-alpine: Pulling from library/node
+f18232174bc9: Already exists
+dd71dde834b5: Pulling fs layer
+1e5a4c89cee5: Pulling fs layer
+25ff2da83641: Pulling fs layer
+25ff2da83641: Download complete
+1e5a4c89cee5: Verifying Checksum
+1e5a4c89cee5: Download complete
+dd71dde834b5: Verifying Checksum
+dd71dde834b5: Download complete
+dd71dde834b5: Pull complete
+1e5a4c89cee5: Pull complete
+25ff2da83641: Pull complete
+Digest: sha256:8d6421d663b4c28fd3ebc498332f249011d118945588d0a35cb9bc4b8ca09d9e
+Status: Downloaded newer image for node:18-alpine
+ ---> ee77c6cd7c18
+Step 2/13 : WORKDIR /app
+ ---> Running in 10a2c977828d
+Removing intermediate container 10a2c977828d
+ ---> 87611c4cb9d9
+Step 3/13 : COPY package*.json ./
+ ---> d52717696e9b
+Step 4/13 : COPY tsconfig.base.json ./
+COPY failed: file not found in build context or excluded by .dockerignore: stat tsconfig.base.json: file does not exist
+ERROR
+ERROR: build step 0 "gcr.io/cloud-builders/docker" failed: step exited with non-zero status: 1
