@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1920" height="1080" viewBox="0 0 1920 1080">
+  <!-- Background gradient -->
+  <defs>
+    <linearGradient id="bg-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E3A5F" stop-opacity="1" />
+      <stop offset="100%" stop-color="#152C48" stop-opacity="0.9" />
+    </linearGradient>
+    
+    <!-- Pattern for background texture -->
+    <pattern id="pattern" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <circle cx="30" cy="30" r="1" fill="#FFFFFF" fill-opacity="0.2" />
+    </pattern>
+  </defs>
+  
+  <!-- Main background -->
+  <rect width="100%" height="100%" fill="url(#bg-gradient)" />
+  
+  <!-- Overlay pattern -->
+  <rect width="100%" height="100%" fill="url(#pattern)" />
+  
+  <!-- Abstract shapes -->
+  <circle cx="200" cy="200" r="400" fill="#F7941D" fill-opacity="0.05" />
+  <circle cx="1800" cy="900" r="300" fill="#F7941D" fill-opacity="0.03" />
+  <circle cx="1600" cy="200" r="100" fill="#F7941D" fill-opacity="0.1" />
+  
+  <!-- Decorative lines -->
+  <path d="M0,300 Q960,100 1920,300" stroke="#FFFFFF" stroke-width="1" fill="none" stroke-opacity="0.1" />
+  <path d="M0,600 Q960,800 1920,600" stroke="#FFFFFF" stroke-width="1" fill="none" stroke-opacity="0.1" />
+  <path d="M0,900 Q960,700 1920,900" stroke="#FFFFFF" stroke-width="1" fill="none" stroke-opacity="0.1" />
+</svg>
