@@ -24,12 +24,17 @@ web-e2e
 .editorconfig
 .prettierrc
 .prettierignore
-eslint.config.mjs
-jest.config.ts
-# tsconfig*.json - commented out to allow base config
+# Keep essential config files for build
+# eslint.config.mjs
+# jest.config.ts
+# tsconfig*.json
 webpack.config.js
 .angular
 .firebase
 firebase-debug.log
 .DS_Store
 Thumbs.db
+build_log.txt
+deploy.sh
+GITHUB_DEPLOYMENT.md
+DEPLOYMENT_GUIDE.md
