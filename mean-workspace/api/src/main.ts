@@ -15,10 +15,15 @@ import { join } from 'path';
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
+  Logger.log(`[DEBUG] __dirname: ${__dirname}`, 'Bootstrap');
+  const staticAssetsPath = join(__dirname, '..', 'web', 'browser');
+  Logger.log(`[DEBUG] Resolved static assets path: ${staticAssetsPath}`, 'Bootstrap');
+  const indexHtmlPath = join(__dirname, '..', 'web', 'browser', 'index.html');
+  Logger.log(`[DEBUG] Resolved index.html path: ${indexHtmlPath}`, 'Bootstrap');
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   
   // Serve static files from Angular build
-  app.useStaticAssets(join(__dirname, '..', 'web', 'browser'), {
+  app.useStaticAssets(staticAssetsPath, {
     index: false, // Don't serve index.html automatically
   });
   
@@ -45,7 +50,7 @@ async function bootstrap() {
     if (req.originalUrl.startsWith('/api')) {
       next();
     } else {
-      res.sendFile(join(__dirname, '..', 'web', 'browser', 'index.html'));
+      res.sendFile(indexHtmlPath);
     }
   });
   
