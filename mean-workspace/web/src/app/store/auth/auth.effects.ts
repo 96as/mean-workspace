@@ -106,4 +106,16 @@ export class AuthEffects {
       map(() => AuthActions.loadUserProfile())
     )
   );
+
+  // Clear token on profile load failure
+  loadUserProfileFailure$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AuthActions.loadUserProfileFailure),
+      tap(() => {
+        // Clear invalid token from localStorage
+        this.authService.logout().subscribe();
+      })
+    ),
+    { dispatch: false }
+  );
 }

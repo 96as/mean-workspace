@@ -103,12 +103,16 @@ export const authReducer = createReducer(
   on(AuthActions.loadUserProfileSuccess, (state, { user }) => ({
     ...state,
     user,
+    isAuthenticated: true,
     isLoading: false,
     error: null
   })),
 
   on(AuthActions.loadUserProfileFailure, (state, { error }) => ({
     ...state,
+    user: null,
+    token: null,
+    isAuthenticated: false,
     isLoading: false,
     error
   })),
