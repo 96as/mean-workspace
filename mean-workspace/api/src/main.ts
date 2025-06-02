@@ -9,11 +9,18 @@ dotenv.config();
 
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { join } from 'path';
 
 import { AppModule } from './app/app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create<NestExpressApplication>(AppModule);
+  
+  // Serve static files from Angular build
+  app.useStaticAssets(join(__dirname, '..', 'web', 'browser'), {
+    index: false, // Don't serve index.html automatically
+  });
   
   // Enable CORS for frontend communication
   app.enableCors({
@@ -32,6 +39,16 @@ async function bootstrap() {
   
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
+  
+  // Fallback to serve Angular app for non-API routes
+  app.use('*', (req, res, next) => {
+    if (req.originalUrl.startsWith('/api')) {
+      next();
+    } else {
+      res.sendFile(join(__dirname, '..', 'web', 'browser', 'index.html'));
+    }
+  });
+  
   const port = process.env.PORT || 8080;
   await app.listen(port, '0.0.0.0');
   Logger.log(
