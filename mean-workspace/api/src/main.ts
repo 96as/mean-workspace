@@ -18,7 +18,7 @@ async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule);
   
   // Serve static files from Angular build
-  app.useStaticAssets(join(__dirname, '..', 'web', 'browser'), {
+  app.useStaticAssets(join(__dirname, '..', '..', 'dist', 'web', 'browser'), {
     index: false, // Don't serve index.html automatically
   });
   
@@ -45,7 +45,7 @@ async function bootstrap() {
     if (req.originalUrl.startsWith('/api')) {
       next();
     } else {
-      res.sendFile(join(__dirname, '..', 'web', 'browser', 'index.html'));
+      res.sendFile(join(__dirname, '..', '..', 'dist', 'web', 'browser', 'index.html'));
     }
   });
   
