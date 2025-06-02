@@ -8,6 +8,7 @@
     "build:web": "nx build web",
     "start": "node dist/api/main.js",
     "dev": "nx serve api",
+    "dev:web": "nx serve web",
     "test": "nx test api"
   },
   "private": true,
