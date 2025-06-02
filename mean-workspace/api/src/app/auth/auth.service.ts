@@ -37,7 +37,7 @@ export class AuthService {
 
     // Generate JWT token
     const payload = { sub: savedUser._id, email: savedUser.email };
-    const access_token = this.jwtService.sign(payload, { expiresIn: '1m' });
+    const access_token = this.jwtService.sign(payload, { expiresIn: '8h' });
 
     return {
       token: access_token,
@@ -66,7 +66,7 @@ export class AuthService {
 
     // Generate JWT token
     const payload = { sub: user._id, email: user.email };
-    const access_token = this.jwtService.sign(payload, { expiresIn: '1m' });
+    const access_token = this.jwtService.sign(payload, { expiresIn: '8h' });
 
     return {
       token: access_token,

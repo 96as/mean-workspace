@@ -1,4 +1,7 @@
-starting build "28e42251-8cec-4a51-8742-04c80e4dfb33"
+When enabled, log entries which do not fit on one line wrap to the next line.
+When enabled, log entries appear in reverse chronological order.
+When enabled, log entries are shown with timestamps.
+starting build "ec9181d8-f0c6-4943-a2c6-06b44273beb1"
 FETCHSOURCE
 hint: Using 'master' as the name for the initial branch. This default branch name
 hint: is subject to change. To configure the initial branch name to use in all
@@ -12,13 +15,11 @@ hint:
 hint: 	git branch -m <name>
 Initialized empty Git repository in /workspace/.git/
 From https://github.com/96as/mean-workspace
- * branch            7b366d3d4c17c61de10b8e87217c6884d1f72c04 -> FETCH_HEAD
-HEAD is now at 7b366d3 refactor(api): improve static assets handling with debug logs
+ * branch            a30c646b46f196fabbe54fcea64884a481dd5e4d -> FETCH_HEAD
+HEAD is now at a30c646 chore: add dev:web script to package.json
 GitCommit:
-7b366d3d4c17c61de10b8e87217c6884d1f72c04
+a30c646b46f196fabbe54fcea64884a481dd5e4d
 BUILD
-Starting Step #0 - "Buildpack"
-Pulling image: gcr.io/k8s-skaffold/pack
 Using default tag: latest
 latest: Pulling from k8s-skaffold/pack
 396c31837116: Pulling fs layer
@@ -42,44 +43,19 @@ Status: Downloaded newer image for gcr.io/buildpacks/builder:latest
 latest: Pulling from buildpacks/google-22/run
 Digest: sha256:f78bd1f9863a8b0191f6915c9f714bc00aa1cdc0fb83fcc659c1ba3e487b62e4
 Status: Downloaded newer image for gcr.io/buildpacks/google-22/run:latest
-0.20.5: Pulling from buildpacksio/lifecycle
-0baecf37abee: Pulling fs layer
-bfb59b82a9b6: Pulling fs layer
-efa9d1d5d3a2: Pulling fs layer
-a62778643d56: Pulling fs layer
-7c12895b777b: Pulling fs layer
-3214acf345c0: Pulling fs layer
-5664b15f108b: Pulling fs layer
-0bab15eea81d: Pulling fs layer
-4aa0ea1413d3: Pulling fs layer
-da7816fa955e: Pulling fs layer
-9aee425378d2: Pulling fs layer
-8efdac1741f0: Pulling fs layer
-a62778643d56: Waiting
-7c12895b777b: Waiting
-3214acf345c0: Waiting
-5664b15f108b: Waiting
-0bab15eea81d: Waiting
-4aa0ea1413d3: Waiting
-da7816fa955e: Waiting
-9aee425378d2: Waiting
-8efdac1741f0: Waiting
-bfb59b82a9b6: Verifying Checksum
-bfb59b82a9b6: Download complete
+0baecf37abee: Verifying Checksum
 0baecf37abee: Download complete
-efa9d1d5d3a2: Verifying Checksum
-efa9d1d5d3a2: Download complete
 0baecf37abee: Pull complete
 bfb59b82a9b6: Pull complete
-efa9d1d5d3a2: Pull complete
 a62778643d56: Verifying Checksum
 a62778643d56: Download complete
+efa9d1d5d3a2: Pull complete
 a62778643d56: Pull complete
 7c12895b777b: Verifying Checksum
 7c12895b777b: Download complete
+7c12895b777b: Pull complete
 3214acf345c0: Verifying Checksum
 3214acf345c0: Download complete
-7c12895b777b: Pull complete
 3214acf345c0: Pull complete
 5664b15f108b: Verifying Checksum
 5664b15f108b: Download complete
@@ -102,7 +78,7 @@ da7816fa955e: Pull complete
 Digest: sha256:3274fe28594f484240fc3f17e46b7b45e304830e544dcdd82ce19472d159ef71
 Status: Downloaded newer image for buildpacksio/lifecycle:0.20.5
 ===> ANALYZING
-[analyzer] Image with name "europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:7b366d3d4c17c61de10b8e87217c6884d1f72c04" not found
+[analyzer] Image with name "europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:a30c646b46f196fabbe54fcea64884a481dd5e4d" not found
 ===> DETECTING
 [detector] target distro name/version labels not found, reading /etc/os-release file
 [detector] 4 of 5 buildpacks participating
@@ -114,10 +90,10 @@ Status: Downloaded newer image for buildpacksio/lifecycle:0.20.5
 ===> BUILDING
 [builder] target distro name/version labels not found, reading /etc/os-release file
 [builder] === Node.js - Runtime (google.nodejs.runtime@1.0.0) ===
-[builder] 2025/06/02 13:32:24 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
+[builder] 2025/06/02 14:11:05 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/version.json
 [builder] ***** CACHE MISS: "nodejs"
 [builder] Installing Node.js v22.16.0.
-[builder] 2025/06/02 13:32:24 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-22.16.0.tar.gz
+[builder] 2025/06/02 14:11:05 [DEBUG] GET https://dl.google.com/runtimes/ubuntu2204/nodejs/nodejs-22.16.0.tar.gz
 [builder] === Node.js - Npm (google.nodejs.npm@1.1.0) ===
 [builder] ***** CACHE MISS: "npm_modules"
 [builder] Installing application dependencies.
@@ -130,38 +106,68 @@ Status: Downloaded newer image for buildpacksio/lifecycle:0.20.5
 [builder] npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.4.1
 [builder] npm notice To update run: npm install -g npm@11.4.1
 [builder] npm notice
-[builder] Done "npm ci --quiet --no-fund --no-audit (NODE_ENV=development)" (1m12.436677876s)
+[builder] Done "npm ci --quiet --no-fund --no-audit (NODE_ENV=development)" (1m20.111492344s)
 [builder] --------------------------------------------------------------------------------
 [builder] Running "npm run build"
 [builder] 
 [builder] > @mean-workspace/source@0.0.0 build
-[builder] > nx build api
+[builder] > nx run-many --target=build --projects=api,web
+[builder] 
+[builder] 
+[builder]  NX   Running target build for 2 projects:
+[builder] 
+[builder] - api
+[builder] - web
+[builder] 
 [builder] 
 [builder] 
 [builder] > nx run api:build
+[builder] 
 [builder] 
 [builder] > webpack-cli build node-env=production
 [builder] 
 [builder] chunk (runtime: main) main.js (main) 18.4 KiB [entry] [rendered]
 [builder] webpack compiled successfully (38634153a39436d0)
 [builder] 
+[builder] > nx run web:build:production
+[builder] 
+[builder] ❯ Building...
+[builder] ✔ Building...
+[builder] Initial chunk files   | Names         |  Raw size | Estimated transfer size
+[builder] main-OXUDVFZ2.js      | main          | 435.58 kB |               111.92 kB
+[builder] polyfills-B6TNHZQ6.js | polyfills     |  34.58 kB |                11.32 kB
+[builder] styles-FVGUA26H.css   | styles        |  13.13 kB |               921 bytes
+[builder] 
+[builder]                       | Initial total | 483.29 kB |               124.16 kB
+[builder] 
+[builder] Application bundle generation complete. [21.634 seconds]
+[builder] 
+[builder] ▲ [WARNING] web/src/app/auth/login-register/login-register.component.scss exceeded maximum budget. Budget 4.00 kB was not met by 615 bytes with a total of 4.62 kB.
 [builder] 
 [builder] 
-[builder]  NX   Successfully ran target build for project api
+[builder] ▲ [WARNING] web/src/app/dashboard/dashboard.component.scss exceeded maximum budget. Budget 4.00 kB was not met by 984 bytes with a total of 4.98 kB.
 [builder] 
 [builder] 
-[builder] Done "npm run build" (9.458312666s)
+[builder] Output location: /workspace/dist/web
+[builder] 
+[builder] 
+[builder] 
+[builder] 
+[builder]  NX   Successfully ran target build for 2 projects
+[builder] 
+[builder] 
+[builder] Done "npm run build" (29.066836465s)
 [builder] --------------------------------------------------------------------------------
 [builder] Running "npm prune --production"
 [builder] npm warn config production Use `--omit=dev` instead.
 [builder] 
-[builder] up to date, audited 227 packages in 7s
+[builder] up to date, audited 227 packages in 8s
 [builder] 
 [builder] 32 packages are looking for funding
 [builder]   run `npm fund` for details
 [builder] 
 [builder] found 0 vulnerabilities
-[builder] Done "npm prune --production" (6.673304591s)
+[builder] Done "npm prune --production" (8.25560816s)
 [builder] === Config - Entrypoint (google.config.entrypoint@0.9.0) ===
 [builder] Using entrypoint from environment variable GOOGLE_ENTRYPOINT: node dist/api/main.js
 [builder] === Utils - Label Image (google.utils.label-image@0.0.2) ===
@@ -177,12 +183,12 @@ Status: Downloaded newer image for buildpacksio/lifecycle:0.20.5
 [exporter] Adding label 'io.buildpacks.build.metadata'
 [exporter] Adding label 'io.buildpacks.project.metadata'
 [exporter] Setting default process type 'web'
-[exporter] Saving europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:7b366d3d4c17c61de10b8e87217c6884d1f72c04...
-[exporter] *** Images (50f8e0d3239c):
-[exporter]       europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:7b366d3d4c17c61de10b8e87217c6884d1f72c04
+[exporter] Saving europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:a30c646b46f196fabbe54fcea64884a481dd5e4d...
+[exporter] *** Images (204864fecfdb):
+[exporter]       europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:a30c646b46f196fabbe54fcea64884a481dd5e4d
 [exporter] Adding cache layer 'google.nodejs.runtime:node'
 [exporter] Adding cache layer 'google.nodejs.npm:npm_modules'
-Successfully built image 'europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:7b366d3d4c17c61de10b8e87217c6884d1f72c04'
+Successfully built image 'europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:a30c646b46f196fabbe54fcea64884a481dd5e4d'
 Finished Step #0 - "Buildpack"
 Starting Step #1 - "Push"
 Already have image (with digest): gcr.io/cloud-builders/docker
@@ -190,7 +196,7 @@ The push refers to repository [europe-west1-docker.pkg.dev/mean-stack-deployment
 83d85471d9f8: Preparing
 272c745e439c: Preparing
 b95feea05494: Preparing
-522b6a44347d: Preparing
+6a4312225f6d: Preparing
 36f9de0748c4: Preparing
 8802793b6163: Preparing
 aa0688bbb837: Preparing
@@ -204,33 +210,29 @@ aa0688bbb837: Waiting
 8300804fccfe: Waiting
 1451672d122b: Waiting
 346f14bf17b9: Waiting
-83d85471d9f8: Pushed
+36f9de0748c4: Pushed
 272c745e439c: Pushed
 b95feea05494: Pushed
-36f9de0748c4: Pushed
 03f816362c77: Layer already exists
+83d85471d9f8: Pushed
 8300804fccfe: Layer already exists
 1451672d122b: Layer already exists
 346f14bf17b9: Layer already exists
 8802793b6163: Pushed
-522b6a44347d: Pushed
+6a4312225f6d: Pushed
 aa0688bbb837: Pushed
-7b366d3d4c17c61de10b8e87217c6884d1f72c04: digest: sha256:9d11cbb3cadac4c58f7c218e0374bff064bcc7be734365fd9a99fa0cf8bbec27 size: 2623
+a30c646b46f196fabbe54fcea64884a481dd5e4d: digest: sha256:cdafb098e52714d4e0c90733303c955167ac6504573776108dee4cd2b018fdd5 size: 2623
 Finished Step #1 - "Push"
 Starting Step #2 - "Deploy"
 Pulling image: gcr.io/google.com/cloudsdktool/cloud-sdk:slim
 slim: Pulling from google.com/cloudsdktool/cloud-sdk
 3e6b9d1a9511: Already exists
-bbebe329b47b: Pulling fs layer
 275e316ac4ce: Pulling fs layer
 cbfc7978cf2b: Pulling fs layer
-abcb80e2fbc0: Pulling fs layer
-abcb80e2fbc0: Waiting
 275e316ac4ce: Verifying Checksum
 275e316ac4ce: Download complete
 bbebe329b47b: Verifying Checksum
 bbebe329b47b: Download complete
-abcb80e2fbc0: Verifying Checksum
 abcb80e2fbc0: Download complete
 bbebe329b47b: Pull complete
 275e316ac4ce: Pull complete
@@ -242,15 +244,19 @@ Digest: sha256:9ba8726fdabb052792ae21450f6266f74f2ce03dbb6d217346e4ec8f2a031cd0
 Status: Downloaded newer image for gcr.io/google.com/cloudsdktool/cloud-sdk:slim
 gcr.io/google.com/cloudsdktool/cloud-sdk:slim
 Deploying...
-Creating Revision...............................................................................................................................................................................................done
+Creating Revision....................................................................................................................................................................................................................................done
 Routing traffic.....done
 Done.
-Service [mean-workspace] revision [mean-workspace-00020-mbg] has been deployed and is serving 100 percent of traffic.
+Service [mean-workspace] revision [mean-workspace-00025-xlj] has been deployed and is serving 100 percent of traffic.
 Service URL: https://mean-workspace-1070383640988.europe-west1.run.app
+Finished Step #2 - "Deploy"
+PUSH
+Pushing europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace:a30c646b46f196fabbe54fcea64884a481dd5e4d
+The push refers to repository [europe-west1-docker.pkg.dev/mean-stack-deployment/cloud-run-source-deploy/mean-workspace/mean-workspace]
 83d85471d9f8: Preparing
 272c745e439c: Preparing
 b95feea05494: Preparing
-522b6a44347d: Preparing
+6a4312225f6d: Preparing
 36f9de0748c4: Preparing
 8802793b6163: Preparing
 aa0688bbb837: Preparing
@@ -264,10 +270,16 @@ aa0688bbb837: Waiting
 8300804fccfe: Waiting
 1451672d122b: Waiting
 346f14bf17b9: Waiting
-8300804fccfe: Layer already exists
+83d85471d9f8: Layer already exists
+b95feea05494: Layer already exists
+6a4312225f6d: Layer already exists
+272c745e439c: Layer already exists
+36f9de0748c4: Layer already exists
 8802793b6163: Layer already exists
 aa0688bbb837: Layer already exists
-03f816362c77: Layer already exists
 1451672d122b: Layer already exists
-7b366d3d4c17c61de10b8e87217c6884d1f72c04: digest: sha256:9d11cbb3cadac4c58f7c218e0374bff064bcc7be734365fd9a99fa0cf8bbec27 size: 2623
+8300804fccfe: Layer already exists
+03f816362c77: Layer already exists
+346f14bf17b9: Layer already exists
+a30c646b46f196fabbe54fcea64884a481dd5e4d: digest: sha256:cdafb098e52714d4e0c90733303c955167ac6504573776108dee4cd2b018fdd5 size: 2623
 DONE
