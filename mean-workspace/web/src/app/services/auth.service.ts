@@ -8,7 +8,7 @@ import { LoginRequest, RegisterRequest, AuthResponse, User } from '../store/auth
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_URL = 'http://localhost:3000/api';
+  private readonly API_URL = 'http://localhost:8080/api';
   private tokenSubject: BehaviorSubject<string | null>;
   public token$: Observable<string | null>;
 

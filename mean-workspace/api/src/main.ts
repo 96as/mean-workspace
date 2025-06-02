@@ -3,6 +3,10 @@
  * This is only a minimal backend to get started.
  */
 
+// Load environment variables
+import * as dotenv from 'dotenv';
+dotenv.config();
+
 import { Logger, ValidationPipe } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 
@@ -13,7 +17,9 @@ async function bootstrap() {
   
   // Enable CORS for frontend communication
   app.enableCors({
-    origin: 'http://localhost:4200', // Angular dev server
+    origin: process.env.NODE_ENV === 'production' 
+      ? ['https://your-frontend-domain.com'] // Replace with your actual frontend domain
+      : ['http://localhost:4200', 'http://localhost:8080', 'http://localhost:3000'],
     credentials: true,
   });
   
@@ -26,8 +32,8 @@ async function bootstrap() {
   
   const globalPrefix = 'api';
   app.setGlobalPrefix(globalPrefix);
-  const port = process.env.PORT || 3000;
-  await app.listen(port);
+  const port = process.env.PORT || 8080;
+  await app.listen(port, '0.0.0.0');
   Logger.log(
     `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
   );
