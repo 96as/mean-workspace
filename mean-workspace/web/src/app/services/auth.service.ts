@@ -20,10 +20,11 @@ export class AuthService {
   private getApiUrl(): string {
     // In production, use relative URL to the same domain
     // In development, use localhost with port
-    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
-      return '/api';
+    if (typeof window !== 'undefined' && 
+        (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1')) {
+      return 'http://localhost:8080/api';
     }
-    return 'http://localhost:8080/api';
+    return '/api';
   }
 
   /**
