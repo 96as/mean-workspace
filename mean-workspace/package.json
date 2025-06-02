@@ -3,7 +3,9 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "build": "nx build api",
+    "build": "nx run-many --target=build --projects=api,web",
+    "build:api": "nx build api",
+    "build:web": "nx build web",
     "start": "node dist/api/main.js",
     "dev": "nx serve api",
     "test": "nx test api"
