@@ -10,8 +10,11 @@ import { TestController } from './test/test.controller';
     MongooseModule.forRoot(
       process.env.MONGODB_URI || 'mongodb://localhost:27017/penny-auth',
       {
-        serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s
+        serverSelectionTimeoutMS: 30000, // Increased timeout for Cloud Run
         socketTimeoutMS: 45000, // Close sockets after 45s of inactivity
+        connectTimeoutMS: 30000, // Connection timeout
+        bufferCommands: false, // Disable mongoose buffering
+        // bufferMaxEntries option is deprecated, using bufferCommands: false is sufficient
       }
     ),
     AuthModule,

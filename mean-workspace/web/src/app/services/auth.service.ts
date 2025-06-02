@@ -8,13 +8,22 @@ import { LoginRequest, RegisterRequest, AuthResponse, User } from '../store/auth
   providedIn: 'root'
 })
 export class AuthService {
-  private readonly API_URL = 'http://localhost:8080/api';
+  private readonly API_URL = this.getApiUrl();
   private tokenSubject: BehaviorSubject<string | null>;
   public token$: Observable<string | null>;
 
   constructor(private http: HttpClient) {
     this.tokenSubject = new BehaviorSubject<string | null>(this.getStoredToken());
     this.token$ = this.tokenSubject.asObservable();
+  }
+
+  private getApiUrl(): string {
+    // In production, use relative URL to the same domain
+    // In development, use localhost with port
+    if (typeof window !== 'undefined' && window.location.hostname !== 'localhost') {
+      return '/api';
+    }
+    return 'http://localhost:8080/api';
   }
 
   /**

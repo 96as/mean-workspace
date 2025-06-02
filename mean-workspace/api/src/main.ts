@@ -18,7 +18,7 @@ async function bootstrap() {
   // Enable CORS for frontend communication
   app.enableCors({
     origin: process.env.NODE_ENV === 'production' 
-      ? ['https://your-frontend-domain.com'] // Replace with your actual frontend domain
+      ? true // Allow all origins in production for now
       : ['http://localhost:4200', 'http://localhost:8080', 'http://localhost:3000'],
     credentials: true,
   });
@@ -35,8 +35,11 @@ async function bootstrap() {
   const port = process.env.PORT || 8080;
   await app.listen(port, '0.0.0.0');
   Logger.log(
-    `🚀 Application is running on: http://localhost:${port}/${globalPrefix}`
+    `🚀 Application is running on port ${port} with prefix /${globalPrefix}`
   );
 }
 
-bootstrap();
+bootstrap().catch(err => {
+  Logger.error('Error starting application:', err);
+  process.exit(1);
+});
