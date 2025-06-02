@@ -2,7 +2,12 @@
   "name": "@mean-workspace/source",
   "version": "0.0.0",
   "license": "MIT",
-  "scripts": {},
+  "scripts": {
+    "build": "nx build api",
+    "start": "node dist/api/main.js",
+    "dev": "nx serve api",
+    "test": "nx test api"
+  },
   "private": true,
   "devDependencies": {
     "@angular-devkit/build-angular": "~19.2.0",
