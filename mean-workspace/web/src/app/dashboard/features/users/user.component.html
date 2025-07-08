@@ -1,0 +1,25 @@
+<div class="users-dashboard">
+  <div class="dashboard-layout">
+    <!-- Left Column (65%) -->
+    <div class="left-column">
+      <mat-card class="table-card">
+        <app-vendor-users-table></app-vendor-users-table>
+      </mat-card>
+      
+      <mat-card class="table-card">
+        <app-client-users-table></app-client-users-table>
+      </mat-card>
+    </div>
+    
+    <!-- Right Column (35%) -->
+    <div class="right-column">
+      <mat-card class="chart-card">
+        <app-status-donut-chart [chartData]="vendorStatusData"></app-status-donut-chart>
+      </mat-card>
+      
+      <mat-card class="chart-card">
+        <app-status-donut-chart [chartData]="clientStatusData"></app-status-donut-chart>
+      </mat-card>
+    </div>
+  </div>
+</div>

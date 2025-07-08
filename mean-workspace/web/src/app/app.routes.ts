@@ -1,6 +1,5 @@
 import { Route } from '@angular/router';
 import { LoginRegisterComponent } from './auth/login-register/login-register.component';
-import { DashboardComponent } from './dashboard/dashboard.component';
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
 
@@ -13,7 +12,7 @@ export const appRoutes: Route[] = [
   },
   { 
     path: 'dashboard', 
-    component: DashboardComponent,
+    loadChildren: () => import('./dashboard/dashboard.module').then(m => m.DashboardModule),
     canActivate: [AuthGuard]
   },
   // Wildcard route - should be last

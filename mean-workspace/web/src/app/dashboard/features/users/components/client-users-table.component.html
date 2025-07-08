@@ -1,0 +1,65 @@
+<div class="table-container">
+  <div class="table-header">
+    <h3>NHC Clients Users</h3>
+    <mat-form-field appearance="outline" class="search-field">
+      <mat-label>Search</mat-label>
+      <input matInput (keyup)="applyFilter($event)" placeholder="Search clients...">
+      <mat-icon matSuffix>search</mat-icon>
+    </mat-form-field>
+  </div>
+
+  <div class="mat-elevation-z2">
+    <table mat-table [dataSource]="dataSource" matSort class="full-width-table">
+      
+      <!-- Client Name Column -->
+      <ng-container matColumnDef="clientName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Client Name</th>
+        <td mat-cell *matCellDef="let element">{{element.clientName}}</td>
+      </ng-container>
+
+      <!-- First Name Column -->
+      <ng-container matColumnDef="firstName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>First Name</th>
+        <td mat-cell *matCellDef="let element">{{element.firstName}}</td>
+      </ng-container>
+
+      <!-- Last Name Column -->
+      <ng-container matColumnDef="lastName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</th>
+        <td mat-cell *matCellDef="let element">{{element.lastName}}</td>
+      </ng-container>
+
+      <!-- Email Column -->
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Email</th>
+        <td mat-cell *matCellDef="let element">{{element.email}}</td>
+      </ng-container>
+
+      <!-- Last Logged In Column -->
+      <ng-container matColumnDef="lastLoggedIn">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Last Logged In Date</th>
+        <td mat-cell *matCellDef="let element">{{element.lastLoggedIn | date:'M/d/yyyy, h:mm a'}}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header>Status</th>
+        <td mat-cell *matCellDef="let element">
+          <span class="status-badge" [ngClass]="'status-' + element.status.toLowerCase()">{{element.status}}</span>
+        </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" 
+                   showFirstLastButtons 
+                   aria-label="Select page of client users">
+    </mat-paginator>
+  </div>
+
+  <div class="table-footer">
+    <span class="row-count">{{dataSource.data.length}} rows</span>
+  </div>
+</div>

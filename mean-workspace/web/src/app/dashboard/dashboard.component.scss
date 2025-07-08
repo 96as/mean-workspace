@@ -55,6 +55,7 @@ $transition-speed: 0.3s;
       object-fit: contain;
     }
   }
+
   
   .user-section {
     display: flex;
@@ -103,6 +104,58 @@ $transition-speed: 0.3s;
       &:disabled {
         opacity: 0.7;
         cursor: not-allowed;
+      }
+    }
+  }
+}
+
+// —— Navigation Bar Styles ——
+$nav-bg-color: #fff;
+$nav-text-color: #716e6e;
+$nav-active-color: #1890ff;
+$nav-spacing: 24px;
+$nav-underline-thk: 2px;
+$nav-padding-y: 12px;
+
+.navigation-bar {
+  background-color: transparent;
+  padding: 0 $nav-spacing;
+  width: 100%;
+
+  .nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .nav-link {
+    position: relative;
+    padding: $nav-padding-y 16px;
+    font-weight: 500;
+    color: $nav-text-color;
+    text-decoration: none;
+    transition: color 0.2s;
+    flex: 1;
+    text-align: center;
+
+    // the underline "track"
+    &::after {
+      content: "";
+      position: absolute;
+      left: 16px;
+      right: 16px;
+      bottom: 0;
+      height: $nav-underline-thk;
+      background-color: transparent;
+      transition: background-color 0.2s;
+    }
+
+    &.active {
+      color: $nav-active-color;
+
+      &::after {
+        background-color: $nav-active-color;
       }
     }
   }

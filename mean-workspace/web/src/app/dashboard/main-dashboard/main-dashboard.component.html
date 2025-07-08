@@ -1,0 +1,37 @@
+<div class="welcome-card">
+  <h1>Dashboard</h1>
+  <p>Welcome to your Penny dashboard! Your authentication is working perfectly.</p>
+  
+  <div class="feature-grid">
+    <div class="feature-card">
+      <h3>🔐 Secure Authentication</h3>
+      <p>login is protected with JWT tokens and NgRx state management.</p>
+    </div>
+    
+    <div class="feature-card">
+      <h3>📊 State Management</h3>
+      <p>Application state is managed efficiently with NgRx Store and Effects.</p>
+    </div>
+    
+    <div class="feature-card auto-logout-card" *ngIf="timeRemaining$ | async as timeRemaining">
+      <h3>⏰ Auto Logout Feature</h3>
+      <p>This web application implements automatic session timeout using JWT token expiration. Your session is secured with time-based authentication that automatically logs you out when the token expires.</p>
+      <div class="timer-display">
+        <span class="timer-label">Current session expires in:</span>
+        <span class="timer-value" [class.warning]="timeRemaining <= 30">
+          {{ formatTime(timeRemaining) }}
+        </span>
+      </div>
+    </div>
+    
+    <div class="feature-card">
+      <h3>🛡️ Route Protection</h3>
+      <p>Protected routes ensure only authenticated users can access this page.</p>
+    </div>
+    
+    <div class="feature-card">
+      <h3>🚀 Ready to Build</h3>
+      <p>MEAN stack foundation is complete and ready!</p>
+    </div>
+  </div>
+</div>

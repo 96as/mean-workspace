@@ -1,0 +1,30 @@
+<div class="chart-container">
+  <div class="chart-header">
+    <h3>{{chartData?.title}}</h3>
+  </div>
+  
+  <div class="chart-content">
+    <div class="chart-wrapper">
+      <canvas baseChart
+              [data]="doughnutChartData"
+              [options]="doughnutChartOptions"
+              [type]="doughnutChartType">
+      </canvas>
+      
+      <div class="chart-center">
+        <div class="total-number">{{totalCount}}</div>
+        <div class="total-label">TOTAL</div>
+      </div>
+    </div>
+    
+    <div class="chart-legend">
+      <div class="legend-item" 
+           *ngFor="let label of chartData?.labels; let i = index"
+           [style.border-left-color]="getLegendColor(i)">
+        <span class="legend-label">{{label}}</span>
+        <span class="legend-value">{{chartData?.data[i]}}</span>
+        <span class="legend-percentage">{{getPercentage(i)}}%</span>
+      </div>
+    </div>
+  </div>
+</div>

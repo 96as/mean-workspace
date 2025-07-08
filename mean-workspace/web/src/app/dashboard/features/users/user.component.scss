@@ -1,0 +1,85 @@
+.users-dashboard {
+  padding: 20px;
+  height: 100%;
+  
+  .dashboard-layout {
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    
+    .left-column {
+      flex: 0 0 65%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      
+      .table-card {
+        flex: 1;
+        padding: 0;
+        
+        ::ng-deep .mat-card-content {
+          padding: 0;
+        }
+      }
+    }
+    
+    .right-column {
+      flex: 0 0 35%;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      
+      .chart-card {
+        flex: 1;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        
+        ::ng-deep .mat-card-content {
+          padding: 0;
+          flex: 1;
+        }
+      }
+    }
+  }
+}
+
+// Responsive design
+@media (max-width: 1200px) {
+  .users-dashboard {
+    .dashboard-layout {
+      flex-direction: column;
+      
+      .left-column,
+      .right-column {
+        flex: none;
+      }
+      
+      .right-column {
+        .dashboard-layout {
+          flex-direction: row;
+          
+          .chart-card {
+            flex: 1;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .users-dashboard {
+    padding: 10px;
+    
+    .dashboard-layout {
+      gap: 10px;
+      
+      .right-column {
+        .dashboard-layout {
+          flex-direction: column;
+        }
+      }
+    }
+  }
+}
