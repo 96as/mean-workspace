@@ -24,7 +24,7 @@ export interface ChartDataInput {
 export class StatusDonutChartComponent implements OnInit {
   @Input() chartData!: ChartDataInput;
 
-  public doughnutChartType: ChartType = 'doughnut';
+  public doughnutChartType = 'doughnut' as const;
   public doughnutChartData: ChartData<'doughnut'> = {
     labels: [],
     datasets: []
@@ -108,7 +108,7 @@ export class StatusDonutChartComponent implements OnInit {
   }
 
   getPercentage(index: number): string {
-    if (!this.chartData || !this.chartData.data[index]) return '0';
+    if (!this.chartData || !this.chartData.data || !this.chartData.data[index] || this.totalCount === 0) return '0';
     const percentage = (this.chartData.data[index] / this.totalCount) * 100;
     return percentage.toFixed(1);
   }

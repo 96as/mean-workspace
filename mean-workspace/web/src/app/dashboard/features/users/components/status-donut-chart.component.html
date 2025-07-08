@@ -22,7 +22,7 @@
            *ngFor="let label of chartData?.labels; let i = index"
            [style.border-left-color]="getLegendColor(i)">
         <span class="legend-label">{{label}}</span>
-        <span class="legend-value">{{chartData?.data[i]}}</span>
+        <span class="legend-value">{{chartData?.data?.[i] || 0}}</span>
         <span class="legend-percentage">{{getPercentage(i)}}%</span>
       </div>
     </div>
