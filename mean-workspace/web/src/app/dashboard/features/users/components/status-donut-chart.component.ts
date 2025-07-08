@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NgChartsModule } from 'ng2-charts';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
@@ -21,8 +21,12 @@ export interface ChartDataInput {
   templateUrl: './status-donut-chart.component.html',
   styleUrls: ['./status-donut-chart.component.scss']
 })
-export class StatusDonutChartComponent implements OnInit {
+export class StatusDonutChartComponent implements OnInit, OnChanges {
   @Input() chartData!: ChartDataInput;
+  @Input() title = 'Status Distribution';
+  
+  @Output() segmentClick = new EventEmitter<{label: string, value: number, index: number}>();
+  @Output() legendClick = new EventEmitter<{label: string, value: number, index: number}>();
 
   public doughnutChartType = 'doughnut' as const;
   public doughnutChartData: ChartData<'doughnut'> = {
@@ -59,6 +63,12 @@ export class StatusDonutChartComponent implements OnInit {
 
   ngOnInit() {
     this.setupChartData();
+  }
+
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['chartData']) {
+      this.setupChartData();
+    }
   }
 
   private setupChartData() {
@@ -111,5 +121,20 @@ export class StatusDonutChartComponent implements OnInit {
     if (!this.chartData || !this.chartData.data || !this.chartData.data[index] || this.totalCount === 0) return '0';
     const percentage = (this.chartData.data[index] / this.totalCount) * 100;
     return percentage.toFixed(1);
+  }
+
+  onLegendClick(index: number) {
+    if (this.chartData && this.chartData.labels && this.chartData.data) {
+      this.legendClick.emit({
+        label: this.chartData.labels[index],
+        value: this.chartData.data[index],
+        index
+      });
+    }
+  }
+
+  onChartClick(event: any) {
+    // Handle chart segment clicks if needed
+    // This would require additional chart.js event handling
   }
 }

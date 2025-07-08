@@ -20,6 +20,20 @@
         ::ng-deep .mat-card-content {
           padding: 0;
         }
+        
+        .loading-container {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 60px 20px;
+          
+          p {
+            margin-top: 16px;
+            color: #666;
+            font-size: 14px;
+          }
+        }
       }
     }
     

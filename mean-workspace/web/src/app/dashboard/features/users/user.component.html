@@ -3,22 +3,41 @@
     <!-- Left Column (65%) -->
     <div class="left-column">
       <mat-card class="table-card">
-        <app-vendor-users-table></app-vendor-users-table>
-      </mat-card>
-      
-      <mat-card class="table-card">
-        <app-client-users-table></app-client-users-table>
+        <div class="loading-container" *ngIf="loading">
+          <mat-spinner diameter="40"></mat-spinner>
+          <p>Loading users...</p>
+        </div>
+        
+        <app-users-table 
+          *ngIf="!loading"
+          [users]="users"
+          [page]="currentPage"
+          [limit]="pageSize"
+          [filter]="currentFilter"
+          [total]="totalUsers"
+          (filterChange)="onFilterChange($event)"
+          (pageChange)="onPageChange($event)"
+          (limitChange)="onPageSizeChange($event)">
+        </app-users-table>
       </mat-card>
     </div>
     
     <!-- Right Column (35%) -->
     <div class="right-column">
       <mat-card class="chart-card">
-        <app-status-donut-chart [chartData]="vendorStatusData"></app-status-donut-chart>
+        <app-status-donut-chart 
+          [chartData]="vendorStatusData"
+          [title]="'Vendor Users Status'"
+          (legendClick)="onVendorChartLegendClick($event)">
+        </app-status-donut-chart>
       </mat-card>
       
       <mat-card class="chart-card">
-        <app-status-donut-chart [chartData]="clientStatusData"></app-status-donut-chart>
+        <app-status-donut-chart 
+          [chartData]="clientStatusData"
+          [title]="'Client Users Status'"
+          (legendClick)="onClientChartLegendClick($event)">
+        </app-status-donut-chart>
       </mat-card>
     </div>
   </div>
