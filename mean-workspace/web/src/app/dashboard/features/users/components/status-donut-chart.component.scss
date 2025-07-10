@@ -1,6 +1,20 @@
+// Card wrapper styling
+:host ::ng-deep {
+  .p-card {
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e0e0e0;
+    margin-bottom: 20px;
+  }
+  
+  .p-card-content {
+    padding: 0;
+  }
+}
+
 .chart-container {
   padding: 16px;
-  height: 100%;
   
   .chart-header {
     margin-bottom: 20px;
@@ -17,18 +31,26 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    height: calc(100% - 60px);
   }
   
   .chart-wrapper {
     position: relative;
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
     margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
-    canvas {
-      max-width: 100%;
-      max-height: 100%;
+    :host ::ng-deep {
+      .p-chart {
+        position: relative;
+        
+        canvas {
+          max-width: 100%;
+          max-height: 100%;
+        }
+      }
     }
     
     .chart-center {
@@ -37,6 +59,8 @@
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
+      pointer-events: none;
+      z-index: 10;
       
       .total-number {
         font-size: 32px;
@@ -94,12 +118,42 @@
 @media (max-width: 768px) {
   .chart-container {
     .chart-wrapper {
-      width: 150px;
-      height: 150px;
+      width: 250px;
+      height: 250px;
       
       .chart-center {
         .total-number {
           font-size: 24px;
+        }
+        
+        .total-label {
+          font-size: 10px;
+        }
+      }
+    }
+    
+    .chart-legend {
+      .legend-item {
+        padding: 6px 8px;
+        font-size: 11px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .chart-container {
+    .chart-wrapper {
+      width: 200px;
+      height: 200px;
+      
+      .chart-center {
+        .total-number {
+          font-size: 20px;
+        }
+        
+        .total-label {
+          font-size: 9px;
         }
       }
     }

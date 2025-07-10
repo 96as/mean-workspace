@@ -1,67 +1,54 @@
-import { Component, Input, Output, EventEmitter, OnInit, ViewChild, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTableModule } from '@angular/material/table';
-import { MatPaginatorModule, PageEvent } from '@angular/material/paginator';
-import { MatSortModule } from '@angular/material/sort';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatIconModule } from '@angular/material/icon';
-import { MatButtonModule } from '@angular/material/button';
-import { MatTableDataSource } from '@angular/material/table';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
+import { TableModule, TableLazyLoadEvent } from 'primeng/table';
+import { PaginatorModule } from 'primeng/paginator';
+import { InputTextModule } from 'primeng/inputtext';
+import { IconFieldModule } from 'primeng/iconfield';
+import { InputIconModule } from 'primeng/inputicon';
+import { TagModule } from 'primeng/tag';
+import { CardModule } from 'primeng/card';
 import { User } from '../user.component';
+
 
 @Component({
   selector: 'app-users-table',
   standalone: true,
   imports: [
     CommonModule,
-    MatTableModule,
-    MatPaginatorModule,
-    MatSortModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatIconModule,
-    MatButtonModule
+    TableModule,
+    PaginatorModule,
+    InputTextModule,
+    IconFieldModule,
+    InputIconModule,
+    TagModule,
+    CardModule
   ],
   templateUrl: './users-table.component.html',
   styleUrls: ['./users-table.component.scss']
 })
-export class UsersTableComponent implements OnInit, OnChanges {
+export class UsersTableComponent {
   @Input() users: User[] = [];
   @Input() page = 1;
   @Input() limit = 10;
   @Input() filter = '';
   @Input() total = 0;
+  @Input() loading = false;
 
+  @Output() lazyLoad = new EventEmitter<TableLazyLoadEvent>();
   @Output() filterChange = new EventEmitter<string>();
-  @Output() pageChange = new EventEmitter<number>();
-  @Output() limitChange = new EventEmitter<number>();
 
-  displayedColumns: string[] = ['organizationName', 'firstName', 'lastName', 'email', 'lastLoggedIn', 'status', 'organization'];
-  dataSource = new MatTableDataSource<User>();
+  columns = [
+    { field: 'organizationName', header: 'Organization Name' },
+    { field: 'firstName', header: 'First Name' },
+    { field: 'lastName', header: 'Last Name' },
+    { field: 'email', header: 'Email' },
+    { field: 'lastLoggedIn', header: 'Last Logged In' },
+    { field: 'status', header: 'Status' },
+    { field: 'organization', header: 'Type' }
+  ];
 
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
-  @ViewChild(MatSort) sort!: MatSort;
-
-  ngOnInit() {
-    this.updateDataSource();
-  }
-
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['users']) {
-      this.updateDataSource();
-    }
-  }
-
-  ngAfterViewInit() {
-    this.dataSource.sort = this.sort;
-    // Don't set paginator here since we're handling pagination externally
-  }
-
-  private updateDataSource() {
-    this.dataSource.data = this.users;
+  onLazyLoad(event: TableLazyLoadEvent) {
+    this.lazyLoad.emit(event);
   }
 
   onFilterChange(event: Event) {
@@ -69,29 +56,22 @@ export class UsersTableComponent implements OnInit, OnChanges {
     this.filterChange.emit(filterValue);
   }
 
-  onPageChange(event: PageEvent) {
-    this.pageChange.emit(event.pageIndex + 1); // Convert to 1-based indexing
-    
-    // Only emit limitChange if page size actually changed
-    if (event.pageSize !== this.limit) {
-      this.limitChange.emit(event.pageSize);
-    }
-  }
-
-  getStatusClass(status: string): string {
+  getStatusSeverity(status: string): 'success' | 'warning' | 'danger' | 'info' {
     switch (status.toUpperCase()) {
       case 'ACTIVE':
-        return 'status-active';
+        return 'success';
       case 'INACTIVE':
-        return 'status-inactive';
+        return 'danger';
       case 'PENDING':
-        return 'status-pending';
+        return 'warning';
       default:
-        return 'status-default';
+        return 'info';
     }
   }
 
-  getOrganizationClass(organization: string): string {
-    return organization === 'vendor' ? 'org-vendor' : 'org-client';
+  getOrganizationSeverity(organization: string): 'info' | 'secondary' {
+    return organization === 'vendor' ? 'info' : 'secondary';
   }
+
+
 }

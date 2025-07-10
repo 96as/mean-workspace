@@ -1,44 +1,38 @@
 <div class="users-dashboard">
   <div class="dashboard-layout">
-    <!-- Left Column (65%) -->
+    <!-- Left Column (70%) -->
     <div class="left-column">
-      <mat-card class="table-card">
-        <div class="loading-container" *ngIf="loading">
-          <mat-spinner diameter="40"></mat-spinner>
-          <p>Loading users...</p>
-        </div>
-        
-        <app-users-table 
-          *ngIf="!loading"
-          [users]="users"
-          [page]="currentPage"
-          [limit]="pageSize"
-          [filter]="currentFilter"
-          [total]="totalUsers"
-          (filterChange)="onFilterChange($event)"
-          (pageChange)="onPageChange($event)"
-          (limitChange)="onPageSizeChange($event)">
-        </app-users-table>
-      </mat-card>
+      <div class="loading-container" *ngIf="loading">
+        <mat-spinner diameter="40"></mat-spinner>
+        <p>Loading users...</p>
+      </div>
+      
+      <app-users-table 
+        *ngIf="!loading"
+        [users]="users"
+        [page]="currentPage"
+        [limit]="pageSize"
+        [filter]="currentFilter"
+        [total]="totalUsers"
+        [loading]="loading"
+        (filterChange)="onFilterChange($event)"
+        (lazyLoad)="onLazyLoad($event)">
+      </app-users-table>
     </div>
     
-    <!-- Right Column (35%) -->
+    <!-- Right Column (30%) -->
     <div class="right-column">
-      <mat-card class="chart-card">
-        <app-status-donut-chart 
-          [chartData]="vendorStatusData"
-          [title]="'Vendor Users Status'"
-          (legendClick)="onVendorChartLegendClick($event)">
-        </app-status-donut-chart>
-      </mat-card>
+      <app-status-donut-chart 
+        [chartData]="vendorStatusData"
+        [title]="'Vendor Users Status'"
+        (legendClick)="onVendorChartLegendClick($event)">
+      </app-status-donut-chart>
       
-      <mat-card class="chart-card">
-        <app-status-donut-chart 
-          [chartData]="clientStatusData"
-          [title]="'Client Users Status'"
-          (legendClick)="onClientChartLegendClick($event)">
-        </app-status-donut-chart>
-      </mat-card>
+      <app-status-donut-chart 
+        [chartData]="clientStatusData"
+        [title]="'Client Users Status'"
+        (legendClick)="onClientChartLegendClick($event)">
+      </app-status-donut-chart>
     </div>
   </div>
 </div>

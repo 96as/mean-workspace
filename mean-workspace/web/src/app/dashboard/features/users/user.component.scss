@@ -6,54 +6,36 @@
     display: flex;
     gap: 20px;
     height: 100%;
+    padding: 0 60px 0 0;
     
     .left-column {
-      flex: 0 0 65%;
+      flex: 0 0 70%;
       display: flex;
       flex-direction: column;
       gap: 20px;
+      height: calc(100vh - 140px);
+      min-height: 600px;
       
-      .table-card {
-        flex: 1;
-        padding: 0;
+      .loading-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 60px 20px;
         
-        ::ng-deep .mat-card-content {
-          padding: 0;
-        }
-        
-        .loading-container {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 60px 20px;
-          
-          p {
-            margin-top: 16px;
-            color: #666;
-            font-size: 14px;
-          }
+        p {
+          margin-top: 16px;
+          color: #666;
+          font-size: 14px;
         }
       }
     }
     
     .right-column {
-      flex: 0 0 35%;
+      flex: 0 0 30%;
       display: flex;
       flex-direction: column;
       gap: 20px;
-      
-      .chart-card {
-        flex: 1;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-        
-        ::ng-deep .mat-card-content {
-          padding: 0;
-          flex: 1;
-        }
-      }
     }
   }
 }

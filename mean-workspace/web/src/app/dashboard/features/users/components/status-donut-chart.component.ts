@@ -1,6 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { NgChartsModule } from 'ng2-charts';
+import { ChartModule } from 'primeng/chart';
+import { CardModule } from 'primeng/card';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
 
 export interface ChartDataInput {
@@ -16,7 +17,8 @@ export interface ChartDataInput {
   standalone: true,
   imports: [
     CommonModule,
-    NgChartsModule
+    ChartModule,
+    CardModule
   ],
   templateUrl: './status-donut-chart.component.html',
   styleUrls: ['./status-donut-chart.component.scss']

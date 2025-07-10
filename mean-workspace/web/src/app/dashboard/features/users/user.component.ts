@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatCardModule } from '@angular/material/card';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { ChartDataInput } from './components/status-donut-chart.component';
 import { UsersTableComponent } from './components/users-table.component';
@@ -28,7 +27,6 @@ export interface PaginatedUsersResponse {
   standalone: true,
   imports: [
     CommonModule,
-    MatCardModule,
     MatProgressSpinnerModule,
     UsersTableComponent,
     StatusDonutChartComponent
@@ -123,14 +121,16 @@ export class UserComponent implements OnInit {
     this.filterSubject.next(filter);
   }
   
-  onPageChange(page: number) {
-    this.currentPage = page;
-    this.loadUsers();
-  }
-  
-  onPageSizeChange(pageSize: number) {
-    this.pageSize = pageSize;
-    this.currentPage = 1;
+  onLazyLoad(event: any) {
+    // Handle PrimeNG table lazy load event
+    this.currentPage = Math.floor(event.first / event.rows) + 1;
+    this.pageSize = event.rows;
+    
+    // Handle sorting if provided
+    if (event.sortField) {
+      // Add sorting logic here if needed
+    }
+    
     this.loadUsers();
   }
   
