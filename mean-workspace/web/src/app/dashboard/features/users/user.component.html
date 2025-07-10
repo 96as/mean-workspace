@@ -23,15 +23,12 @@
     <!-- Right Column (30%) -->
     <div class="right-column">
       <app-status-donut-chart 
-        [chartData]="vendorStatusData"
-        [title]="'Vendor Users Status'"
-        (legendClick)="onVendorChartLegendClick($event)">
-      </app-status-donut-chart>
-      
-      <app-status-donut-chart 
-        [chartData]="clientStatusData"
-        [title]="'Client Users Status'"
-        (legendClick)="onClientChartLegendClick($event)">
+        [chartData]="currentChartData"
+        [title]="currentChartData.title"
+        [showToggle]="true"
+        [toggleButtonText]="isVendorView ? 'Switch to Client View' : 'Switch to Vendor View'"
+        (legendClick)="onChartLegendClick($event)"
+        (toggleClick)="toggleChartView()">
       </app-status-donut-chart>
     </div>
   </div>

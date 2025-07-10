@@ -17,13 +17,25 @@
   padding: 16px;
   
   .chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 20px;
     
     h3 {
       margin: 0;
       color: #333;
+      font-size: 18px;
       font-weight: 600;
-      font-size: 16px;
+      flex: 1;
+    }
+    
+    .toggle-button {
+      font-size: 12px;
+      padding: 6px 12px;
+      min-width: auto;
+      height: 32px;
+      text-transform: none;
     }
   }
   

@@ -23,11 +23,13 @@
         [totalRecords]="total"
         [rows]="limit"
         [first]="(page - 1) * limit"
-        [paginator]="false"
+        [paginator]="true"
         [rowsPerPageOptions]="[10, 25, 50]"
         sortMode="single"
         (onLazyLoad)="onLazyLoad($event)"
-        styleClass="p-datatable-striped">
+        styleClass="p-datatable-striped"
+        [totalRecords]="total"
+        >
         
         <ng-template pTemplate="header">
           <tr>
@@ -86,7 +88,7 @@
       </p-table>
     </div>
 
-    <div class="table-paginator">
+    <!-- <div class="table-paginator">
       <p-paginator 
         [rows]="limit"
         [totalRecords]="total"
@@ -95,7 +97,7 @@
         (onPageChange)="onLazyLoad($event)"
         >
       </p-paginator>
-    </div>
+    </div> -->
 
   </div>
 </p-card>

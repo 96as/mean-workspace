@@ -2,6 +2,14 @@
   <div class="chart-container">
     <div class="chart-header">
       <h3>{{title}}</h3>
+      <button 
+        *ngIf="showToggle" 
+        mat-icon-button 
+        class="toggle-button"
+        (click)="onToggleClick()"
+        [title]="toggleButtonText">
+        <mat-icon>autorenew</mat-icon>
+      </button>
     </div>
     
     <div class="chart-content">

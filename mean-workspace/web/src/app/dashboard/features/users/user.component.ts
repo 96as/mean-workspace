@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatButtonModule } from '@angular/material/button';
 import { ChartDataInput } from './components/status-donut-chart.component';
 import { UsersTableComponent } from './components/users-table.component';
 import { StatusDonutChartComponent } from './components/status-donut-chart.component';
@@ -28,6 +29,7 @@ export interface PaginatedUsersResponse {
   imports: [
     CommonModule,
     MatProgressSpinnerModule,
+    MatButtonModule,
     UsersTableComponent,
     StatusDonutChartComponent
   ],
@@ -46,7 +48,9 @@ export class UserComponent implements OnInit {
   currentFilter = '';
   private filterSubject = new Subject<string>();
   
-  // Chart data
+  // Chart data and toggle state
+  isVendorView = true; // Toggle state: true for vendor, false for client
+  
   vendorStatusData: ChartDataInput = {
     title: 'Vendor Users Status',
     data: [],
@@ -60,6 +64,11 @@ export class UserComponent implements OnInit {
     labels: [],
     total: 0
   };
+  
+  // Current chart data based on toggle
+  get currentChartData(): ChartDataInput {
+    return this.isVendorView ? this.vendorStatusData : this.clientStatusData;
+  }
   
   constructor(private userService: UserService) {
     // Setup debounced filter
@@ -134,16 +143,15 @@ export class UserComponent implements OnInit {
     this.loadUsers();
   }
   
-  onVendorChartLegendClick(event: {label: string, value: number, index: number}) {
-    // Filter table to show only vendor users with this status
-    this.currentFilter = `vendor ${event.label.toLowerCase()}`;
-    this.currentPage = 1;
-    this.loadUsers();
+  // Toggle between vendor and client view
+  toggleChartView() {
+    this.isVendorView = !this.isVendorView;
   }
   
-  onClientChartLegendClick(event: {label: string, value: number, index: number}) {
-    // Filter table to show only client users with this status
-    this.currentFilter = `client ${event.label.toLowerCase()}`;
+  onChartLegendClick(event: {label: string, value: number, index: number}) {
+    // Filter table based on current view (vendor or client) and status
+    const organizationType = this.isVendorView ? 'vendor' : 'client';
+    this.currentFilter = `${organizationType} ${event.label.toLowerCase()}`;
     this.currentPage = 1;
     this.loadUsers();
   }

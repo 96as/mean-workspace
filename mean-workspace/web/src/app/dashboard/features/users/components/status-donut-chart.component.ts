@@ -1,5 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { ChartModule } from 'primeng/chart';
 import { CardModule } from 'primeng/card';
 import { ChartConfiguration, ChartData, ChartType } from 'chart.js';
@@ -17,6 +19,8 @@ export interface ChartDataInput {
   standalone: true,
   imports: [
     CommonModule,
+    MatButtonModule,
+    MatIconModule,
     ChartModule,
     CardModule
   ],
@@ -26,9 +30,12 @@ export interface ChartDataInput {
 export class StatusDonutChartComponent implements OnInit, OnChanges {
   @Input() chartData!: ChartDataInput;
   @Input() title = 'Status Distribution';
+  @Input() showToggle = false;
+  @Input() toggleButtonText = 'Toggle View';
   
   @Output() segmentClick = new EventEmitter<{label: string, value: number, index: number}>();
   @Output() legendClick = new EventEmitter<{label: string, value: number, index: number}>();
+  @Output() toggleClick = new EventEmitter<void>();
 
   public doughnutChartType = 'doughnut' as const;
   public doughnutChartData: ChartData<'doughnut'> = {
@@ -134,9 +141,8 @@ export class StatusDonutChartComponent implements OnInit, OnChanges {
       });
     }
   }
-
-  onChartClick(event: any) {
-    // Handle chart segment clicks if needed
-    // This would require additional chart.js event handling
+  
+  onToggleClick() {
+    this.toggleClick.emit();
   }
 }
