@@ -24,6 +24,9 @@ $transition-speed: 0.3s;
 
 .dashboard-container {
   min-height: 100vh;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   background-image: url('../../assets/background.svg');
   background-size: cover;
   background-position: center;
@@ -162,14 +165,19 @@ $nav-padding-y: 12px;
 }
 
 .dashboard-main {
-  padding: 40px 24px;
+  padding: 20px 24px;
+  padding-bottom: 30px;
+  flex: 1;
+  overflow: hidden;
+
   
   .content-container {
     width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
+    height: 100%;
+    margin: 0.5%;
     padding: 0 20px;
     box-sizing: border-box;
+    overflow: auto;
   }
   
   .welcome-card {

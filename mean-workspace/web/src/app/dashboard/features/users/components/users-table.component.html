@@ -23,7 +23,7 @@
         [totalRecords]="total"
         [rows]="limit"
         [first]="(page - 1) * limit"
-        [paginator]="true"
+        [paginator]="false"
         [rowsPerPageOptions]="[10, 25, 50]"
         sortMode="single"
         (onLazyLoad)="onLazyLoad($event)"
@@ -88,7 +88,7 @@
       </p-table>
     </div>
 
-    <!-- <div class="table-paginator">
+    <div class="table-paginator">
       <p-paginator 
         [rows]="limit"
         [totalRecords]="total"
@@ -97,7 +97,7 @@
         (onPageChange)="onLazyLoad($event)"
         >
       </p-paginator>
-    </div> -->
+    </div>
 
   </div>
 </p-card>

@@ -13,8 +13,9 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
-      height: calc(100vh - 140px);
-      min-height: 600px;
+      width: 70%;
+      height: 100%;
+
       
       .loading-container {
         display: flex;
@@ -36,7 +37,11 @@
       display: flex;
       flex-direction: column;
       gap: 20px;
+      width: 30%;
+      height: 100%;
+
     }
+
   }
 }
 
